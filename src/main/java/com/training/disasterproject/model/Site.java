@@ -1,4 +1,4 @@
-package com.saikat.springboot.model;
+package com.training.disasterproject.model;
 
 import java.util.List;
 
