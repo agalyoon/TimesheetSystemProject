@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Timecard Application - View Timecard</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Timecard
+					Application</a>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-1">
+				<h1>Timecards View</h1>
+				<hr />
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-10 mt-5 mb-5">
+								<table id="timecardView" class="table table-bordered"
+									style="width: 100%">
+									<thead>
+										<tr th:if="${timecards.isEmpty()}">
+											<td class="text-center" colspan="3">No Records found.
+												Add some...!</td>
+										</tr>
+										<tr>
+											<th>Site Code</th>
+											<th>Contractor Name</th>
+											<th>Total Hrs</th>
+											<th>Total Amount</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="timecard : ${timecards}">
+											<td th:text="${timecard.sitecode}">Site Code</td>
+											<td th:text="${timecard.name}">Contractor Name</td>
+											<td th:text="${timecard.workedhrs}">Total Hrs</td>
+											<td th:text="${timecard.total}">Total Amount</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
