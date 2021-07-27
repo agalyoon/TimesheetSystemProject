@@ -35,6 +35,9 @@
 
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully submitted your timecard!</div>
+				</div>
 				<h1>Timecard Submission Form</h1>
 				<div th:if="${param.error}">
 					<div class="alert alert-danger">Invalid timecard info.</div>
