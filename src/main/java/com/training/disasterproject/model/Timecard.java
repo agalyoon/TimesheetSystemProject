@@ -63,7 +63,7 @@ public class Timecard {
 		this.machinetotal = machinetotal;
 	}
 
-	private String status;
+	private String status = "Review";
 
 	public String getStatus() {
 		return status;

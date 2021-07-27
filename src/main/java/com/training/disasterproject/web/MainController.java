@@ -55,12 +55,17 @@ public class MainController {
 		return "user/index";
 	}
 
-	@GetMapping("/submit_timecard")
+	@GetMapping("submit_timecard")
 	public String submitTimecardGet() {
-		return "/submit_timecard";
+		return "submit_timecard";
 	}
 
-	@PostMapping("/submit_timecard")
+    @ModelAttribute("timecard")
+    public SubmitTimecardDto tcDto() {
+        return new SubmitTimecardDto();
+    }
+
+	@PostMapping("submit_timecard")
 	public String submitTimecardPost(@ModelAttribute("timecard") @Valid SubmitTimecardDto tcDto, BindingResult result) {
 
 		if (result.hasErrors()) {

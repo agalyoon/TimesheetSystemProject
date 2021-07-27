@@ -59,8 +59,8 @@
 										<tr th:each="timecard : ${timecards}">
 											<td th:text="${timecard.sitecode}">Site Code</td>
 											<td th:text="${timecard.name}">Contractor Name</td>
-											<td th:text="${timecard.workedhrs}">Total Hrs</td>
-											<td th:text="${timecard.total}">Total Amount</td>
+											<td th:text="${timecard.workedhrs} + ${timecard.usedhrs}">Total Hrs</td>
+											<td th:text="${timecard.labortotal} + ${timecard.machinetotal}">Total Amount</td>
 											<td th:unless="${timecard.status == 'Finalized'}"><a
 												th:href="@{/approve/{id}(id=${timecard.id})}"
 												th:text="${timecard.status}">Status</a></td>
