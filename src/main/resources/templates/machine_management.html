@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Disaster Recovery Application</title>
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+			
+		  
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Disaster Recovery Application:Timecard submission</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{/logout}"><span class="glyphicon glyphicon-user"></span><span
+						sec:authentication="name">Username</span>(<span
+						sec:authentication="principal.authorities">Roles</span>)</a></li>
+			</ul>
+
+		</div>
+	</nav>
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2 bg-warning" >
+				<ul>
+					<li><a th:href="@{/jobs}">Job code Management</a></li>
+					<li><a th:href="@{/machines}">Machine Management</a></li>
+					<li><a th:href="@{/timesheetsAdmin}">Timecard Approval</a></li>
+					<li><a th:href="@{/sites}">Site Management</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-sm-10" >
+				
+						<h4>Machine Management</h2>
+			</div>
+					
+		</div>
+			<div class = "row">
+					<div class="col-sm-2 bg-warning">
+					</div>
+					<div class="col-sm-8">
+					</div>
+					<div class="col-sm-2 bg-warning">
+						<h4>
+							<a th:href="@{/jobs/add}">Add New Job</a>
+						</h4>
+					</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+				</div>
+				<div class="col-sm-10">
+					<table class="table">
+						<thead>
+							<tr >
+								<td class="text-white">MachineCode</td>
+								<td class="text-white">Description</td>
+								<td class="text-white">Hourly Rent</td>
+								<td class="text-white">Max Hours Per Day</td>
+								<td class="text-white"></td>
+								<td class="text-white"></td>
+								
+							</tr>
+						 </thead>
+						 <tbody>
+							<tr  th:each="machine: ${machines}">
+								<td th:text="${machine.code}"></td>
+								<td th:text="${machine.description}"></td>
+								<td th:text="${machine.hourlyRate}"></td>
+								<td th:text="${machine.maxHoursPerDay}"></td>
+								<td>
+									<a th:href="@{/machines/update/{machineCode}(machineCode=${machine.code})}">Edit</a>
+								</td>
+								<td>
+									<a th:href="@{/machines/delete/{id}(id=${machine.code})}">Delete</a>
+								</td>
+							</tr>
+						  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+			
+			
+			
+			
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
