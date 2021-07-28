@@ -2,6 +2,7 @@ package com.training.disasterproject.service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.training.disasterproject.exception.RecordNotFoundException;
 import com.training.disasterproject.model.Role;
 import com.training.disasterproject.model.User;
 import com.training.disasterproject.repository.UserRepository;
@@ -56,4 +58,11 @@ public class UserServiceImpl implements UserService {
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
     }
+    
+    public List<User> getContractors(String role)
+	{
+		return userRepository.findByRoles(role);
+	}
+    
+    
 }

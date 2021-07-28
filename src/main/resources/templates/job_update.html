@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disaster Recovery Application</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Disaster Recovery Application</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{/logout}"><span class="glyphicon glyphicon-user"></span><span
+						sec:authentication="name">Username</span>(<span
+						sec:authentication="principal.authorities">Roles</span>)</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<h2 class=" text-warning">Update Job</h2>
+					<form class="form-horizontal" action="#" th:action="@{/jobs/update/{jobCode}(jobCode=${job.code}"
+						method="post" th:object="${job}">
+
+						<label>Job code:</label>
+						<input type="text" th:field="*{code}" class="form-control" />
+						<span class="error" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></span><br/>
+
+						
+
+						<label>Description:</label>
+						<input type="text" th:field="*{description}" class="form-control" />
+						<span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span><br/>
+
+						<label>Hourly Rate:</label>
+						<input type="text" th:field="*{hourlyRate}" class="form-control"/>
+						<span class="error" th:if="${#fields.hasErrors('hourlyRate')}" th:errors="*{hourlyRate}"></span><br/>
+
+						<label>Maximum Hours per day:</label>
+						<input type="text" th:field="*{maxHoursPerDay}" class="form-control"/>
+						<span class="error" th:if="${#fields.hasErrors('maxHoursPerDay')}" th:errors="*{maxHoursPerDay}"></span><br/> 
+						<br />
+						<input type="submit" class="btn btn-primary" value="Submit"><br />
+					</form>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+
+		</div>
+	</div>
+</body>
