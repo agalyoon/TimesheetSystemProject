@@ -37,6 +37,8 @@ public class JobServiceImpl implements JobService {
 		{
 			throw new RecordExistsException("Job code '" + job.getCode() + "' exists");
 		}
+	public void add(Job job) 
+	{
 		
 		jobRepo.save(job);
 	}
@@ -51,6 +53,9 @@ public class JobServiceImpl implements JobService {
 	{
 		jobRepo.findById(job.getCode())
 				.orElseThrow(() -> new RecordNotFoundException("Job '" + job.getCode() + "'not found"));
+	public void update(Job job) 
+	{
+		
 		
 		jobRepo.save(job);
 	}
@@ -59,6 +64,9 @@ public class JobServiceImpl implements JobService {
 	{
 		jobRepo.findById(job.getCode())
 				.orElseThrow(() -> new RecordNotFoundException("Job '" + job.getCode() + "'not found"));
+	public void delete(Job job) 
+	{
+		
 		jobRepo.delete(job);
 	}
 
