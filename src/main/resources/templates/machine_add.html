@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Recovery Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand">Disaster Recovery Application</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-user"></span>
+						<span sec:authentication="name">Username</span>(<span
+						sec:authentication="principal.authorities">Roles</span>)</a></li>
+          </ul>
+          
+        </div>
+      </nav>
+<div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 bg-primary">
+                <h2 class="text-warning">Add New Machine</h2>
+                <br/>
+                 <form class="form-horizontal" action="#" th:action="@{/machines/add}" 
+                 				method="post" th:object="${machine}">
+
+                        <label  >Machine code:</label>
+                        <input type="text" class="form-control" 
+                        	th:field="*{code}" />
+                        <span class="error" th:if="${#fields.hasErrors('code')}" 
+                        		th:errors="*{code}"></span><br/>
+
+                        <label  >Description:</label>
+                        <input type="text" class="form-control" 
+                        	th:field="*{description}" />
+                        <span class="error" th:if="${#fields.hasErrors('description')}" 
+                        		th:errors="*{description}"></span><br/>
+
+                        <label>Hourly Rent:</label>
+                        <input type="text" class="form-control" 
+                        	th:field="*{hourlyRent}" />
+                        <span class="error" th:if="${#fields.hasErrors('hourlyRent')}" 
+                        		th:errors="*{hourlyRent}"></span><br/>
+
+                        <label >Maximum Hours per day:</label>
+                        <input type="text" class="form-control" 
+                        	th:field="*{maxHoursPerDay}" />
+                        <span class="error" th:if="${#fields.hasErrors('maxHoursPerDay')}" 
+                        		th:errors="*{maxHoursPerDay}"></span><br/>
+
+						<label>Site:</label>
+						<select th:field="*{site}" class="form-control">
+							<option th:each="site: ${sites}" th:value="${site.code}" th:text="${site.description}"></option>
+						</select>
+						<span class="error" th:if="${#fields.hasErrors('site')}" th:errors="*{site}"></span><br/>
+
+						<label>Contractor:</label>
+						<select th:field="*{user}" class="form-control">
+							<option th:each="user: ${users}" th:value="${user.userId}" th:text="${user.name}"></option>
+						</select>
+						<span class="error" th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span><br/>
+
+                        <br/>
+                        <br/>
+
+                         <a ><input type="submit" class="btn btn-primary" value="Add"></a> 
+                         <br/>
+                         
+                
+                </form>
+             </div>
+                <div class="col-sm-4"></div>
+            </div>
+
+         </div>
+</div>
+</body>
+</html>
