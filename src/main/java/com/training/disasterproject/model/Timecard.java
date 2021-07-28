@@ -8,17 +8,64 @@ import javax.persistence.Id;
 @Entity
 public class Timecard {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-    
-    private String sitecode;
-    private double workedhrs;
-    private double total;
-    private String status;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String name;
 
-    public String getStatus() {
+	private String sitecode;
+	private String machinecode;
+	private String date;
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getMachinecode() {
+		return machinecode;
+	}
+
+	public void setMachinecode(String machinecode) {
+		this.machinecode = machinecode;
+	}
+
+	private double workedhrs;
+	private double usedhrs;
+
+	public double getUsedhrs() {
+		return usedhrs;
+	}
+
+	public void setUsedhrs(double usedhrs) {
+		this.usedhrs = usedhrs;
+	}
+
+	private double labortotal;
+	private double machinetotal;
+
+	public double getLabortotal() {
+		return labortotal;
+	}
+
+	public void setLabortotal(double labortotal) {
+		this.labortotal = labortotal;
+	}
+
+	public double getMachinetotal() {
+		return machinetotal;
+	}
+
+	public void setMachinetotal(double machinetotal) {
+		this.machinetotal = machinetotal;
+	}
+
+	private String status = "Review";
+
+	public String getStatus() {
 		return status;
 	}
 
@@ -27,13 +74,13 @@ public class Timecard {
 	}
 
 	public Timecard() {
-    }
+	}
 
-    public Timecard(String contractorname) {
-        this.name = contractorname;
-    }
+	public Timecard(String contractorname) {
+		this.name = contractorname;
+	}
 
-    public String getSitecode() {
+	public String getSitecode() {
 		return sitecode;
 	}
 
@@ -49,35 +96,24 @@ public class Timecard {
 		this.workedhrs = workedhrs;
 	}
 
-	public double getTotal() {
-		return total;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
 	public Long getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Role{" + "id=" + id + ", name='" + name + '\'' + '}';
+	}
 }

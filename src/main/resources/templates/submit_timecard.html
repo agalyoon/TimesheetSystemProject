@@ -35,41 +35,47 @@
 
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully submitted your timecard!</div>
+				</div>
 				<h1>Timecard Submission Form</h1>
-				<form th:action="@{/submit_timecard}" method="post">
-					<div th:if="${param.error}">
-						<div class="alert alert-danger">Invalid timecard info.</div>
-					</div>
+				<div th:if="${param.error}">
+					<div class="alert alert-danger">Invalid timecard info.</div>
+				</div>
+				<form th:action="@{/submit_timecard}" th:object="${timecard}"
+					method="post">
 					<div class="form-group">
 						<label for="sitecode">Site Code</label>: <input type="text"
-							id="sitecode" name="sitecode" class="form-control"
+							id="sitecode" th:field="*{sitecode}" class="form-control"
 							autofocus="autofocus" placeholder="Site Code" /><br /> <label
 							for="contractorname">Contractor Name</label>: <input type="text"
-							id="contractorname" name="contractorname" class="form-control"
-							placeholder="Contractor Name" /><br /> <label for="timecarddate">Date</label>:
-						<input type="date" id="timecarddate" class="form-control" /><br />
+							id="contractorname" th:field="*{contractorname}"
+							class="form-control" placeholder="Contractor Name" /><br /> <label
+							for="timecarddate">Date</label>: <input type="date" id="date"
+							th:field="*{date}" class="form-control" /><br />
 					</div>
 					<hr />
 					<h2>Labor Entry</h2>
 					<div class="form-group">
-						<label for="laborcode">Labor Code</label>: <input type="laborcode"
-							id="laborcode" class="form-control" placeholder="Labor Code" /><br />
-						<label for="hrsworked">Hrs. Worked</label>: <input
-							type="hrsworked" id="hrsworked" class="form-control"
-							placeholder="Hrs. Worked" /><br /> <label for="total">Total</label>:
-						<input type="total" id="total" class="form-control"
-							placeholder="Total" /><br />
+						<label for="laborcode">Labor Code</label>: <input
+							th:field="*{laborcode}" id="laborcode" class="form-control"
+							placeholder="Labor Code" /><br /> <label for="hrsworked">Hrs.
+							Worked</label>: <input th:field="*{hrsworked}" id="hrsworked"
+							class="form-control" placeholder="Hrs. Worked" /><br /> <label
+							for="labortotal">Total</label>: <input th:field="*{labortotal}"
+							id="labortotal" class="form-control" placeholder="$ Total" /><br />
 					</div>
 					<hr />
 					<h2>Machine Entry</h2>
 					<div class="form-group">
 						<label for="machinecode">Machine Code</label>: <input
-							type="machinecode" id="machinecode" class="form-control"
+							th:field="*{machinecode}" id="machinecode" class="form-control"
 							placeholder="Machine Code" /><br /> <label for="hrsused">Hrs.
-							Used</label>: <input type="hrsused" id="hrsused" class="form-control"
-							placeholder="Hrs. Worked" /><br /> <label for="total">Total</label>:
-						<input type="total" id="total" class="form-control"
-							placeholder="Total" /><br />
+							Used</label>: <input th:field="*{hrsused}" id="hrsused"
+							class="form-control" placeholder="Hrs. Used" /><br /> <label
+							for="machinetotal">Total</label>: <input
+							th:field="*{machinetotal}" id="machinetotal" class="form-control"
+							placeholder="$ Total" /><br />
 					</div>
 					<div class="form-group">
 						<div class="row">
