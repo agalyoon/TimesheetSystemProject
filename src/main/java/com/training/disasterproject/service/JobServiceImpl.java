@@ -15,7 +15,10 @@ import com.training.disasterproject.repository.JobRepository;
 public class JobServiceImpl implements JobService {
 	@Autowired
 	private JobRepository jobRepo;
-
+	
+	public Job findJobByCode(String code) {
+		return jobRepo.getOne(code);
+	}
 	public void addJob(Job job) {
 		jobRepo.save(job);
 	}
@@ -88,7 +91,7 @@ public class JobServiceImpl implements JobService {
 
 	
 
-	public void delete(String jobCode)
+	public void deleteByCode(String jobCode)
 	{
 			jobRepo.deleteById(jobCode);
 		

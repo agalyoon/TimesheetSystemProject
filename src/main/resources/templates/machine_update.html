@@ -43,8 +43,8 @@
 						<span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span><br/>
 
 						<label>Hourly Rent:</label>
-						<input type="text" th:field="*{hourlyRate}" class="form-control"/>
-						<span class="error" th:if="${#fields.hasErrors('hourlyRate')}" th:errors="*{hourlyRent}"></span><br/>
+						<input type="text" th:field="*{hourlyRent}" class="form-control"/>
+						<span class="error" th:if="${#fields.hasErrors('hourlyRent')}" th:errors="*{hourlyRent}"></span><br/>
 
 						<label>Maximum Hours per day:</label>
 						<input type="text" th:field="*{maxHoursPerDay}" class="form-control"/>

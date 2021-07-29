@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.training.disasterproject.model.Job;
 import com.training.disasterproject.model.Machine;
@@ -31,6 +33,8 @@ public class JobController {
 		return "job_management";
 	}
 	
+	//Adding new job form
+	
 	@RequestMapping("/add")
 	public String showNewJobForm(Model model) {
 		Job job = new Job();
@@ -39,6 +43,7 @@ public class JobController {
 		
 	}
 	
+	//saving new record
 	
 	@RequestMapping(value="/save" , method=RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("job")Job job) {
@@ -46,5 +51,22 @@ public class JobController {
 		return "job_management";
 	}
 	
+	
+	//Update job form
+	
+	@RequestMapping(value="update/{code}")
+	public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
+		ModelAndView mav = new ModelAndView("update_job");
+		Job job = jobSvc.findJobByCode(code);
+		mav.addObject("job",job);
+		return mav;
+	}
+	
+	@RequestMapping(value="/delete/{code}")
+	public String deleteJob(@PathVariable("code") String code) {
+		jobSvc.deleteByCode(code);
+		return "job_management";
+		
+	}
 
 }
