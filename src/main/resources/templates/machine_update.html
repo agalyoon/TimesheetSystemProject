@@ -29,11 +29,11 @@
 				<div class="col-sm-4"></div>
 				<div class="col-sm-4">
 					<h2 class=" text-warning">Update machine</h2>
-					<form class="form-horizontal" action="#" th:action="@{/machines/update/{machineCode}(machineCode=${machine.code}"
+					<form class="form-horizontal" action="#" th:action="@{/machines/save}"
 						method="post" th:object="${machine}">
 
 						<label>Machine code:</label>
-						<input type="text" th:field="*{code}" class="form-control" />
+						<input type="text" th:field="*{code}" class="form-control" readonly="readonly" />
 						<span class="error" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></span><br/>
 
 						

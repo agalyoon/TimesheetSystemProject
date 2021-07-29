@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.training.disasterproject.exception.RecordExistsException;
 import com.training.disasterproject.exception.RecordNotFoundException;
+import com.training.disasterproject.model.Job;
 import com.training.disasterproject.model.Machine;
 import com.training.disasterproject.model.Site;
 import com.training.disasterproject.model.Timecard;
@@ -59,6 +61,23 @@ public class MachineController
 		machineSvc.addMachine(machine);
 		return "machine_management";
 	}
+	
+	//Update machine form
+	
+		@RequestMapping(value="update/{code}")
+		public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
+			ModelAndView mav = new ModelAndView("update_job");
+			Machine machine = machineSvc.findMachineByCode(code);
+			mav.addObject("machine",machine);
+			return mav;
+		}
+		//delete job 
+		@RequestMapping(value="/delete/{code}")
+		public String deleteJob(@PathVariable("code") String code) {
+			machineSvc.deleteByCode(code);
+			return "machine_management";
+			
+		}
 	
 	
 }

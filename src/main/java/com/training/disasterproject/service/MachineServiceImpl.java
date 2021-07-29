@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.training.disasterproject.exception.RecordExistsException;
 import com.training.disasterproject.exception.RecordNotFoundException;
+import com.training.disasterproject.model.Job;
 import com.training.disasterproject.model.Machine;
 import com.training.disasterproject.model.Site;
 import com.training.disasterproject.model.User;
@@ -54,6 +55,15 @@ public class MachineServiceImpl implements MachineService{
 	public Optional<Machine> get(String code)
 	{
 		return machineRepo.findById(code);
+	}
+	
+	public Machine findMachineByCode(String code) {
+		return machineRepo.getOne(code);
+	}
+	public void deleteByCode(String machineCode)
+	{
+			machineRepo.deleteById(machineCode);
+		
 	}
 	
 	/*

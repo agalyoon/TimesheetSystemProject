@@ -79,10 +79,10 @@
 								<td th:text="${machine.hourlyRate}"></td>
 								<td th:text="${machine.maxHoursPerDay}"></td>
 								<td>
-									<a th:href="@{/machines/update/{machineCode}(machineCode=${machine.code})}">Edit</a>
+									<a th:href="@{/machines/update/{code}(code=${machine.code})}">Edit</a>
 								</td>
 								<td>
-									<a th:href="@{/machines/delete/{id}(id=${machine.code})}">Delete</a>
+									<a th:href="@{/machines/delete/{code}(code=${machine.code})}">Delete</a>
 								</td>
 							</tr>
 						  </tbody>
