@@ -71,6 +71,8 @@ public class MachineController
 			mav.addObject("machine",machine);
 			return mav;
 		}
+		
+		
 		//delete job 
 		@RequestMapping(value="/delete/{code}")
 		public String deleteJob(@PathVariable("code") String code) {
