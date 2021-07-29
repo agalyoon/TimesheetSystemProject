@@ -23,7 +23,11 @@ public class MachineServiceImpl implements MachineService{
 	{
 		return machineRepo.findAllBySiteAndMachine(site, user);
 	}
-
+	public void addMachine(Machine machine) 
+	{
+		
+		machineRepo.save(machine);
+	}
 	
 	public void update(Machine entry) 
 	{
@@ -51,6 +55,8 @@ public class MachineServiceImpl implements MachineService{
 	{
 		return machineRepo.findById(code);
 	}
+	
+	/*
 
 	@Autowired
 	private MachineRepository machineRepo;
@@ -110,5 +116,5 @@ public class MachineServiceImpl implements MachineService{
 		return machineRepo.findById(code);
 	}
 
-	
+	*/
 }

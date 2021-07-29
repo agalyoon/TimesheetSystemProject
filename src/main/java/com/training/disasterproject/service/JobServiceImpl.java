@@ -16,6 +16,9 @@ public class JobServiceImpl implements JobService {
 	@Autowired
 	private JobRepository jobRepo;
 
+	public void addJob(Job job) {
+		jobRepo.save(job);
+	}
 	public List<Job> getAllJobs()
 	{
 		return (List<Job>) jobRepo.findAll();
@@ -25,7 +28,14 @@ public class JobServiceImpl implements JobService {
 	{
 		return jobRepo.findById(code);
 	}
+	
+	public void add(Job job) 
+	{
+		
+		jobRepo.save(job);
+	}
 
+	/*
 	public void add(Job job) throws RecordExistsException
 	{
 		if (job.getCode() == null)
@@ -37,33 +47,39 @@ public class JobServiceImpl implements JobService {
 		{
 			throw new RecordExistsException("Job code '" + job.getCode() + "' exists");
 		}
-	public void add(Job job) 
-	{
 		
-		jobRepo.save(job);
-	}
-
+		*/
+	
 	/**
 	 *  Updates the Job with the given job.code, 
 	 *  making sure Job exists
 	 * @param job
 	 * @throws JobNotFoundException
 	 */
+		
+/*	
 	public void update(Job job) throws RecordNotFoundException
 	{
 		jobRepo.findById(job.getCode())
 				.orElseThrow(() -> new RecordNotFoundException("Job '" + job.getCode() + "'not found"));
+	
+	}
+	
+	*/
+	
 	public void update(Job job) 
 	{
-		
-		
 		jobRepo.save(job);
 	}
-
+/*
 	public void delete(Job job) throws RecordNotFoundException
 	{
 		jobRepo.findById(job.getCode())
 				.orElseThrow(() -> new RecordNotFoundException("Job '" + job.getCode() + "'not found"));
+		
+	}
+	
+	*/
 	public void delete(Job job) 
 	{
 		
