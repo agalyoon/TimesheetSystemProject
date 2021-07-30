@@ -1,4 +1,5 @@
 package com.training.disasterproject.web;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -28,23 +29,17 @@ import com.training.disasterproject.service.MachineServiceImpl;
 import com.training.disasterproject.service.UserServiceImpl;
 import com.training.disasterproject.web.dto.SubmitTimecardDto;
 
-
-
 @Controller
 @RequestMapping("/machines")
-public class MachineController
-{
+public class MachineController {
 	@Autowired
 	MachineServiceImpl machineSvc;
-
-	
 
 	@Autowired
 	UserServiceImpl userSvc;
 
-	@RequestMapping
-	public String showAllMachines(Model model)
-	{
+	@GetMapping
+	public String showAllMachines(Model model) {
 		model.addAttribute("machines", machineSvc.getAllMachine());
 		return "machine_management";
 	}
@@ -54,32 +49,31 @@ public class MachineController
 		Machine machine = new Machine();
 		model.addAttribute("machine", machine);
 		return "machine_add";
-		
+
 	}
-	@RequestMapping(value="/save" , method=RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("machine")Machine machine) {
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveProduct(@ModelAttribute("machine") Machine machine) {
 		machineSvc.addMachine(machine);
 		return "machine_management";
 	}
-	
-	//Update machine form
-	
-		@RequestMapping(value="update/{code}")
-		public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
-			ModelAndView mav = new ModelAndView("update_job");
-			Machine machine = machineSvc.findMachineByCode(code);
-			mav.addObject("machine",machine);
-			return mav;
-		}
-		
-		
-		//delete job 
-		@RequestMapping(value="/delete/{code}")
-		public String deleteJob(@PathVariable("code") String code) {
-			machineSvc.deleteByCode(code);
-			return "machine_management";
-			
-		}
-	
-	
+
+	// Update machine form
+
+	@RequestMapping(value = "update/{code}")
+	public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
+		ModelAndView mav = new ModelAndView("update_job");
+		Machine machine = machineSvc.findMachineByCode(code);
+		mav.addObject("machine", machine);
+		return mav;
+	}
+
+	// delete job
+	@RequestMapping(value = "/delete/{code}")
+	public String deleteJob(@PathVariable("code") String code) {
+		machineSvc.deleteByCode(code);
+		return "machine_management";
+
+	}
+
 }

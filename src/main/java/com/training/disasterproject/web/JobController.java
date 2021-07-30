@@ -22,51 +22,49 @@ public class JobController {
 	@Autowired
 	JobServiceImpl jobSvc;
 
-	
-
 	@Autowired
 	UserServiceImpl userSvc;
+
 	@GetMapping
-	public String showAllJobs(Model model)
-	{
+	public String showAllJobs(Model model) {
 		model.addAttribute("job", jobSvc.getAllJobs());
 		return "job_management";
 	}
-	
-	//Adding new job form
-	
+
+	// Adding new job form
+
 	@RequestMapping("/add")
 	public String showNewJobForm(Model model) {
 		Job job = new Job();
 		model.addAttribute("job", job);
 		return "job_add";
-		
+
 	}
-	
-	//saving new record
-	
-	@RequestMapping(value="/save" , method=RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("job")Job job) {
+
+	// saving new record
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveProduct(@ModelAttribute("job") Job job) {
 		jobSvc.addJob(job);
 		return "job_management";
 	}
-	
-	
-	//Update job form
-	
-	@RequestMapping(value="update/{code}")
+
+	// Update job form
+
+	@RequestMapping(value = "update/{code}")
 	public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
 		ModelAndView mav = new ModelAndView("update_job");
 		Job job = jobSvc.findJobByCode(code);
-		mav.addObject("job",job);
+		mav.addObject("job", job);
 		return mav;
 	}
-	//delete job 
-	@RequestMapping(value="/delete/{code}")
+
+	// delete job
+	@RequestMapping(value = "/delete/{code}")
 	public String deleteJob(@PathVariable("code") String code) {
 		jobSvc.deleteByCode(code);
 		return "job_management";
-		
+
 	}
 
 }
