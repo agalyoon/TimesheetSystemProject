@@ -57,9 +57,9 @@ public class MachineController
 		
 	}
 	@RequestMapping(value="/save" , method=RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("machine")Machine machine) {
+	public String saveJob(@ModelAttribute("machine")Machine machine) {
 		machineSvc.addMachine(machine);
-		return "machine_management";
+		return "redirect:/machines";
 	}
 	
 	//Update machine form

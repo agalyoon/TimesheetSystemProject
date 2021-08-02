@@ -46,9 +46,9 @@ public class JobController {
 	//saving new record
 	
 	@RequestMapping(value="/save" , method=RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("job")Job job) {
+	public String saveJob(@ModelAttribute("job")Job job) {
 		jobSvc.addJob(job);
-		return "job_management";
+		return "redirect:/jobs";
 	}
 	
 	

@@ -35,14 +35,18 @@
 						<label>Machine code:</label>
 						<input type="text" th:field="*{code}" class="form-control" />
 						<span class="error" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></span><br/>
-
-						
-
+<!--  
+						<label>Contractor:</label>
+						<select th:field="*{user}" class="form-control" >
+							<option th:each="contractor: ${contractors}" th:value="${contractor.userId}" th:text="${contractor.name}"></option>
+						</select>
+						<span class="error" th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span><br/>
+-->
 						<label>Description:</label>
 						<input type="text" th:field="*{description}" class="form-control" />
 						<span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span><br/>
 
-						<label>Hourly Rent:</label>
+						<label>Hourly Rate:</label>
 						<input type="text" th:field="*{hourlyRent}" class="form-control"/>
 						<span class="error" th:if="${#fields.hasErrors('hourlyRent')}" th:errors="*{hourlyRent}"></span><br/>
 
