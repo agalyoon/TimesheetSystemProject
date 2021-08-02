@@ -1,5 +1,7 @@
 package com.training.disasterproject.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +29,8 @@ public class JobController {
 
 	@GetMapping
 	public String showAllJobs(Model model) {
-		model.addAttribute("job", jobSvc.getAllJobs());
+		List<Job> jobs = jobSvc.getAllJobs();
+		model.addAttribute("jobs", jobSvc.getAllJobs());
 		return "job_management";
 	}
 
@@ -35,6 +38,7 @@ public class JobController {
 
 	@RequestMapping("/add")
 	public String showNewJobForm(Model model) {
+		
 		Job job = new Job();
 		model.addAttribute("job", job);
 		return "job_add";
@@ -46,14 +50,15 @@ public class JobController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("job") Job job) {
 		jobSvc.addJob(job);
-		return "job_management";
+		return "redirect:/jobs";
 	}
 
 	// Update job form
 
 	@RequestMapping(value = "update/{code}")
 	public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
-		ModelAndView mav = new ModelAndView("update_job");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("job_update.html");
 		Job job = jobSvc.findJobByCode(code);
 		mav.addObject("job", job);
 		return mav;
@@ -63,7 +68,7 @@ public class JobController {
 	@RequestMapping(value = "/delete/{code}")
 	public String deleteJob(@PathVariable("code") String code) {
 		jobSvc.deleteByCode(code);
-		return "job_management";
+		return "redirect:/jobs";
 
 	}
 

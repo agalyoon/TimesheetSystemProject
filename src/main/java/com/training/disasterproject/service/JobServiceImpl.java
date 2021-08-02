@@ -24,7 +24,7 @@ public class JobServiceImpl implements JobService {
 	}
 	public List<Job> getAllJobs()
 	{
-		return (List<Job>) jobRepo.findAll();
+		return jobRepo.findAll();
 	}
 
 	public Optional<Job> get(String code)
