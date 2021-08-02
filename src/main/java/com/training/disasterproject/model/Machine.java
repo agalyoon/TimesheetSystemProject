@@ -13,21 +13,13 @@ import com.sun.istack.NotNull;
 @Entity
 public class Machine {
 	@Id
-	@NotNull
 	@Column(unique = true, nullable = false)
 	private String code;
 
-	@NotNull
-	@Size(min = 3, max = 255)
 	private String description;
 
-	@NotNull
-	@Size(min = 7, max = 1000)
 	private Float hourlyRent;
 
-	@NotNull
-	@Min(0)
-	@Max(8)
 	private Float maxHoursPerDay;// (BigDecimal 6,2)
 
 	@ManyToOne
