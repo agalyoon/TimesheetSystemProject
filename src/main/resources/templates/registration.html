@@ -21,7 +21,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Timecard Application</a>
+				<a class="navbar-brand" href="#" th:href="@{/login}">Login</a>
+				<a class="navbar-brand" href="#" th:href="@{/login?logout}">Logout</a>
+				<a class="navbar-brand" href="#" th:href="@{/registration}">Register</a>
+				<a class="navbar-brand" href="#" th:href="@{/submit_timecard}">Submit Timecard</a>
+				<a class="navbar-brand" href="#" th:href="@{/view_timecard}">View Timecard</a>
+				<a class="navbar-brand">(Admin Only)</a>
+				<a class="navbar-brand" href="#" th:href="@{/manage_timecard}">Timecards</a>
+				<a class="navbar-brand" href="#" th:href="@{/jobs}">Jobs</a>
+				<a class="navbar-brand" href="#" th:href="@{/machines}">Machines</a>
 			</div>
 		</div>
 	</nav>
@@ -47,7 +55,7 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
 						<label for="firstName" class="control-label">First name</label> <input
-							id="firstName" class="form-control" th:field="*{firstName}" />
+							id="firstName" class="form-control" th:field="*{firstName}" size='' style='width:50%'/>
 						<p class="error-message"
 							th:each="error: ${#fields.errors('firstName')}"
 							th:text="${error}">Validation error</p>
@@ -55,7 +63,7 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
 						<label for="lastName" class="control-label">Last name</label> <input
-							id="lastName" class="form-control" th:field="*{lastName}" />
+							id="lastName" class="form-control" th:field="*{lastName}" size='' style='width:50%'/>
 						<p class="error-message"
 							th:each="error : ${#fields.errors('lastName')}"
 							th:text="${error}">Validation error</p>
@@ -63,7 +71,7 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('role')}? 'has-error':''">
 						<label for="firstName" class="control-label">Role</label> <select
-							id="role" name="role" class="form-control">
+							id="role" name="role" class="form-control" size='' style='width:50%'>
 							<option value="ROLE_CONTRACTOR" selected="selected">Contractor</option>
 							<option value="ROLE_ADMIN">Admin</option>
 						</select>
@@ -74,7 +82,7 @@
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
 						<label for="email" class="control-label">E-mail</label> <input
-							id="email" class="form-control" th:field="*{email}" />
+							id="email" class="form-control" th:field="*{email}" size='' style='width:50%'/>
 						<p class="error-message"
 							th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
 							error</p>
@@ -83,7 +91,7 @@
 						th:classappend="${#fields.hasErrors('confirmEmail')}? 'has-error':''">
 						<label for="confirmEmail" class="control-label">Confirm
 							e-mail</label> <input id="confirmEmail" class="form-control"
-							th:field="*{confirmEmail}" />
+							th:field="*{confirmEmail}" size='' style='width:50%'/>
 						<p class="error-message"
 							th:each="error : ${#fields.errors('confirmEmail')}"
 							th:text="${error}">Validation error</p>
@@ -92,7 +100,7 @@
 						th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
 						<label for="password" class="control-label">Password</label> <input
 							id="password" class="form-control" type="password"
-							th:field="*{password}" />
+							th:field="*{password}" size='' style='width:50%'/>
 						<p class="error-message"
 							th:each="error : ${#fields.errors('password')}"
 							th:text="${error}">Validation error</p>
@@ -101,7 +109,7 @@
 						th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
 						<label for="confirmPassword" class="control-label">Confirm
 							password</label> <input id="confirmPassword" class="form-control"
-							type="password" th:field="*{confirmPassword}" />
+							type="password" th:field="*{confirmPassword}" size='' style='width:50%'/>
 						<p class="error-message"
 							th:each="error : ${#fields.errors('confirmPassword')}"
 							th:text="${error}">Validation error</p>

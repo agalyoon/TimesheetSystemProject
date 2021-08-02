@@ -22,7 +22,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Timecard Application</a>
+				<a class="navbar-brand" href="#" th:href="@{/login}">Login</a>
+				<a class="navbar-brand" href="#" th:href="@{/login?logout}">Logout</a>
+				<a class="navbar-brand" href="#" th:href="@{/registration}">Register</a>
+				<a class="navbar-brand" href="#" th:href="@{/submit_timecard}">Submit Timecard</a>
+				<a class="navbar-brand" href="#" th:href="@{/view_timecard}">View Timecard</a>
+				<a class="navbar-brand">(Admin Only)</a>
+				<a class="navbar-brand" href="#" th:href="@{/manage_timecard}">Timecards</a>
+				<a class="navbar-brand" href="#" th:href="@{/jobs}">Jobs</a>
+				<a class="navbar-brand" href="#" th:href="@{/machines}">Machines</a>
 			</div>
 		</div>
 	</nav>
@@ -46,18 +54,18 @@
 					<div class="form-group">
 						<label for="username">Username</label>: <input type="text"
 							id="username" name="username" class="form-control"
-							autofocus="autofocus" placeholder="Username" />
+							autofocus="autofocus" placeholder="Username" size='' style='width:50%'/>
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>: <input type="password"
 							id="password" name="password" class="form-control"
-							placeholder="Password" />
+							placeholder="Password" size='' style='width:50%'/>
 					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-3">
 								<input type="submit" name="login-submit" id="login-submit"
-									class="form-control btn btn-primary" value="Log In" />
+									class="form-control btn btn-primary" size='' style='width:50%' value="Log In" />
 							</div>
 						</div>
 					</div>
