@@ -40,7 +40,8 @@ public class MachineController {
 
 	@GetMapping
 	public String showAllMachines(Model model) {
-		model.addAttribute("machines", machineSvc.getAllMachine());
+		List<Machine> machines = machineSvc.getAllMachine();
+		model.addAttribute("machines", machines);
 		return "machine_management";
 	}
 
@@ -53,16 +54,18 @@ public class MachineController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("machine") Machine machine) {
+	public String saveMachine(@ModelAttribute("machine") Machine machine) {
 		machineSvc.addMachine(machine);
-		return "machine_management";
+		return "redirect:/machines";
 	}
+
 
 	// Update machine form
 
 	@RequestMapping(value = "update/{code}")
 	public ModelAndView showUpdateJobForm(@PathVariable("code") String code) {
-		ModelAndView mav = new ModelAndView("update_job");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("machine_update.html");
 		Machine machine = machineSvc.findMachineByCode(code);
 		mav.addObject("machine", machine);
 		return mav;
@@ -72,7 +75,7 @@ public class MachineController {
 	@RequestMapping(value = "/delete/{code}")
 	public String deleteJob(@PathVariable("code") String code) {
 		machineSvc.deleteByCode(code);
-		return "machine_management";
+		return "redirect:/machines";
 
 	}
 

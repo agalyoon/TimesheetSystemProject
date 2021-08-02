@@ -84,7 +84,7 @@
 							<tr  th:each="machine: ${machines}">
 								<td th:text="${machine.code}"></td>
 								<td th:text="${machine.description}"></td>
-								<td th:text="${machine.hourlyRate}"></td>
+								<td th:text="${machine.hourlyRent}"></td>
 								<td th:text="${machine.maxHoursPerDay}"></td>
 								<td>
 									<a th:href="@{/machines/update/{code}(code=${machine.code})}">Edit</a>
